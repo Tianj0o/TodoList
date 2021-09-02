@@ -1,0 +1,30 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "367790",
+      "name": "选择",
+      "font_class": "xuanze",
+      "unicode": "e653",
+      "unicode_decimal": 58963
+    },
+    {
+      "icon_id": "7274764",
+      "name": "清除所有",
+      "font_class": "ziyuan",
+      "unicode": "e63f",
+      "unicode_decimal": 58943
+    },
+    {
+      "icon_id": "19515734",
+      "name": "取   消",
+      "font_class": "quxiao",
+      "unicode": "e65b",
+      "unicode_decimal": 58971
+    }
+  ]
+}
