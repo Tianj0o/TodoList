@@ -49,6 +49,12 @@ const changeToDoneList = () => {
 const changeToUndoneList = () => {
   currentList.value = "undone";
 };
+const changeTodoList = (obj: any) => {
+  console.log(obj.startIndex, obj.index)
+  let startTodo = state.todoList[obj.startIndex]
+  state.todoList.splice(obj.startIndex, 1)
+  state.todoList.splice(obj.index, 0, startTodo)
+}
 </script>
 
 <template>
@@ -86,6 +92,7 @@ const changeToUndoneList = () => {
         :todoList="state.todoList"
         @handle-done-btn-click="handleDoneBtnClick"
         @handle-delete-btn-click="handleDeleteBtnClick"
+        @change-todo-list="changeTodoList"
       ></to-do>
     </div>
   </div>
@@ -124,7 +131,7 @@ const changeToUndoneList = () => {
       padding: 10px;
       border-bottom: 1px solid grey;
       input {
-        padding: 5px 2px;
+        // padding: 5px 2px;
         outline: none;
         border: none;
         font-size: 1.1rem;

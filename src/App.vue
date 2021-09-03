@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import todoList from "./view/todoList.vue";
+import test from './view/test.vue'
 </script>
 
 <template>
