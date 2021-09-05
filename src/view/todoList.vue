@@ -5,30 +5,27 @@ import toDo from "../components/todo.vue";
 import { watch } from "@vue/runtime-core";
 
 const inputContent = ref<string>("");
-
-
 const allCount = computed(() => state.todoList.length)
-
 const state = reactive<todoliststate>({
   todoList: [],
   done: 0
 });
-
+//监听数组变化 done状态TODO的数量
 watch(() => state.todoList, () => {
   state.done = state.todoList.filter((item) => {
     return item.status === 'done'
   }).length
-
 }, {
   deep: true
 })
-
+//回车按下
 const handleEnterCLick = () => {
   if (inputContent.value) {
     state.todoList.push({ name: inputContent.value, status: `${currentList.value == 'done' ? 'done' : 'undone'}` });
     inputContent.value = "";
   }
 };
+//监听子组件 的done
 const handleDoneBtnClick = (index: number) => {
   if (state.todoList[index].status == "done") {
     state.todoList[index].status = "undone";
@@ -36,9 +33,12 @@ const handleDoneBtnClick = (index: number) => {
     state.todoList[index].status = "done";
   }
 };
+//监听子组件的删除
 const handleDeleteBtnClick = (index: number) => {
   state.todoList.splice(index, 1);
 };
+
+//记录当前的状态 all done undone 默认是all
 const currentList = ref("all");
 const changeToAllList = () => {
   currentList.value = "all";
@@ -49,8 +49,9 @@ const changeToDoneList = () => {
 const changeToUndoneList = () => {
   currentList.value = "undone";
 };
+//监听子组件中的移动切换数组中两个元素的位置
 const changeTodoList = (obj: any) => {
-  console.log(obj.startIndex, obj.index)
+  console.log('changeemit')
   let startTodo = state.todoList[obj.startIndex]
   state.todoList.splice(obj.startIndex, 1)
   state.todoList.splice(obj.index, 0, startTodo)
@@ -100,28 +101,39 @@ const changeTodoList = (obj: any) => {
 
 <style scoped lang="less">
 .todoList {
+  margin: 30px;
   display: flex;
   flex-direction: column;
   border: 2px solid rgb(247, 243, 243);
-  width: 400px;
+  width: 50%;
+  min-height: 50%;
   background-color: #fff;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 10px 5px 3px rgb(92, 91, 91);
+  box-shadow: 5px 5px 3px #141627;
+  // padding-bottom: 200px;
+  overflow: hidden;
   .header {
     display: flex;
     flex-direction: column;
+    .title {
+      font-size: 2rem;
+    }
     .List {
+      margin: 10px 0;
       display: flex;
       justify-content: space-between;
       .category {
         display: flex;
         div {
+          color: whitesmoke;
+          background-color: #a4a4a7;
           padding: 5px 5px;
           margin-right: 4px;
+          margin: 0 5px;
         }
         .active {
-          background-color: grey;
+          background-color: #25287a;
           border-radius: 10px;
         }
       }

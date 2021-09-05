@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import todoList from "./view/todoList.vue";
-import test from './view/test.vue'
 </script>
 
 <template>
@@ -13,11 +12,11 @@ import test from './view/test.vue'
   padding: 0;
 }
 #app {
-  background-color: #b8b6b6;
+  background-color: #25287a;
   height: 100vh;
   width: 100vw;
   display: flex;
-  align-items: center;
   justify-content: center;
+  font-family: MyCask;
 }
 </style>
